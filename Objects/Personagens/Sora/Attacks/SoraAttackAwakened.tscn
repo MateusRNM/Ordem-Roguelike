@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds77iuuwhvlta"]
+
+[ext_resource type="Script" path="res://scripts/Personagens/Sora/SoraAttackAwakened.gd" id="1_rtrar"]
+[ext_resource type="Texture2D" uid="uid://cjyf7kwgv88nk" path="res://Resources/Sprites/Personagens/Sora/Attack/Awakened/spr_SoraSword.png" id="2_i8cjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i32j"]
+size = Vector2(146, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykw28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i8cjl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SoraAttackAwakened" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rtrar")
+
+[node name="colisor" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_3i32j")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ykw28")
+autoplay = "default"
+
+[node name="visibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.500002, 1.5)
+scale = Vector2(7.35, 0.85)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="visibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_exited"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpsba6s4m7l5v"]
+
+[ext_resource type="Script" path="res://scripts/Personagens/Sora/SoraAttackBasic.gd" id="1_r8gef"]
+[ext_resource type="Texture2D" uid="uid://cat10xxtuiw3i" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash1.png" id="2_nvhmr"]
+[ext_resource type="Texture2D" uid="uid://cpaqqrx0fifsj" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash2.png" id="3_meoqr"]
+[ext_resource type="Texture2D" uid="uid://eu771pub3dy7" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash3.png" id="4_2ypqq"]
+[ext_resource type="Texture2D" uid="uid://cr2yihayprc18" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash4.png" id="5_bnwuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsi2p"]
+size = Vector2(259, 136)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu5pu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nvhmr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5p074"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_meoqr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_llday"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2ypqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bnwuc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="SoraAttackBasic" type="Area2D"]
+script = ExtResource("1_r8gef")
+
+[node name="colisor" type="CollisionShape2D" parent="."]
+position = Vector2(53.5, -1)
+shape = SubResource("RectangleShape2D_jsi2p")
+
+[node name="spritePart1" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 40)
+scale = Vector2(2, 2.5)
+sprite_frames = SubResource("SpriteFrames_hu5pu")
+frame_progress = 1.0
+
+[node name="spritePart2" type="AnimatedSprite2D" parent="."]
+position = Vector2(55, -4)
+scale = Vector2(2, 2.5)
+sprite_frames = SubResource("SpriteFrames_5p074")
+frame_progress = 1.0
+
+[node name="spritePart3" type="AnimatedSprite2D" parent="."]
+position = Vector2(49, -53)
+scale = Vector2(2, 2.5)
+sprite_frames = SubResource("SpriteFrames_llday")
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="spritePart1" to="." method="_on_sprite_part_1_animation_finished"]
+[connection signal="animation_finished" from="spritePart2" to="." method="_on_sprite_part_2_animation_finished"]
+[connection signal="animation_finished" from="spritePart3" to="." method="_on_sprite_part_3_animation_finished"]

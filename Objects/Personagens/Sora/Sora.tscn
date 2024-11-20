@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://dykqd6boq4grv"]
+
+[ext_resource type="Script" path="res://scripts/Personagens/Sora/Sora.gd" id="1_so3gs"]
+[ext_resource type="Texture2D" uid="uid://b6h7es2qntpo2" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC1.png" id="2_cwwr2"]
+[ext_resource type="Texture2D" uid="uid://l4exybltckig" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC2.png" id="3_1dths"]
+[ext_resource type="Texture2D" uid="uid://d2lebi4rb7s44" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC3.png" id="4_ehbsi"]
+[ext_resource type="Texture2D" uid="uid://dmi1gg2wm6rd4" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning1.png" id="5_n3nvw"]
+[ext_resource type="Texture2D" uid="uid://b4lim2jtqo6cb" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning2.png" id="6_h4fh7"]
+[ext_resource type="Texture2D" uid="uid://bh6jat0yayadx" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning3.png" id="7_6nnkv"]
+[ext_resource type="Texture2D" uid="uid://dea0iv5t8rm56" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning4.png" id="8_icder"]
+[ext_resource type="Texture2D" uid="uid://cmphix5wgr5qu" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning5.png" id="9_f5xi1"]
+[ext_resource type="Texture2D" uid="uid://vpykncq6j1gm" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning6.png" id="10_u7lit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6uoa2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cwwr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1dths")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ehbsi")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_f5xi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_icder")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6nnkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u7lit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h4fh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n3nvw")
+}],
+"loop": true,
+"name": &"RUNNING",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayoff"]
+radius = 19.0
+height = 88.0
+
+[node name="Sora" type="CharacterBody2D"]
+script = ExtResource("1_so3gs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6uoa2")
+animation = &"RUNNING"
+autoplay = "IDLE"
+frame_progress = 0.926017
+
+[node name="Colisor" type="CollisionShape2D" parent="."]
+position = Vector2(8, 2)
+shape = SubResource("CapsuleShape2D_ayoff")
+
+[connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]
