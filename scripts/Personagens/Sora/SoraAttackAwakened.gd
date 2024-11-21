@@ -6,6 +6,7 @@ var speed : float = 1000
 var direction : Vector2
 var canPass : bool = false
 var passTimer : float = 0
+@onready var damageTakenLabel : PackedScene = preload("res://Objects/HUD/DamageTakenLabel.tscn")
 
 func _ready() -> void:
 	defineTarget()
@@ -55,6 +56,10 @@ func _on_body_entered(body: Node2D) -> void:
 			if(!canPass):
 				direction = (self.global_position - target.global_position).normalized() 
 			body.HP -= GameVars.playerInstance.damage
+			var dmglbl = damageTakenLabel.instantiate()
+			dmglbl.damage = GameVars.playerInstance.damage
+			dmglbl.position += Vector2(0, -40)
+			body.add_child(dmglbl)
 			canPass = true
 
 

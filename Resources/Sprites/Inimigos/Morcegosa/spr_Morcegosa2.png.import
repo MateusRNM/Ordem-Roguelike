@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr2yihayprc18"
-path="res://.godot/imported/spr_SoraSlash4.png-a2ec80d89db6400acdfdde60135a57a8.ctex"
+uid="uid://c01qddj1c8bkn"
+path="res://.godot/imported/spr_Morcegosa2.png-dd4361fbe29c8ad8dcb25937b6aba10a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash4.png"
-dest_files=["res://.godot/imported/spr_SoraSlash4.png-a2ec80d89db6400acdfdde60135a57a8.ctex"]
+source_file="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa2.png"
+dest_files=["res://.godot/imported/spr_Morcegosa2.png-dd4361fbe29c8ad8dcb25937b6aba10a.ctex"]
 
 [params]
 

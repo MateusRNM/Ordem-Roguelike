@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://djspjbk02ycwh"]
+
+[ext_resource type="Texture2D" uid="uid://dracstxtjyner" path="res://Resources/Sprites/Personagens/Sora/Icone.png" id="1_0cwtg"]
+[ext_resource type="Script" path="res://scripts/HUD/HUD.gd" id="1_flne4"]
+[ext_resource type="FontFile" uid="uid://dhc1q1qn477x7" path="res://Resources/Fonts/pixeledFont.otf" id="2_qix0k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsk2j"]
+font = ExtResource("2_qix0k")
+font_size = 44
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mps2u"]
+bg_color = Color(0.635963, 0.206866, 0.157195, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dog22"]
+bg_color = Color(0.1464, 0.718616, 0.25233, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_flne4")
+
+[node name="Status" type="Node" parent="."]
+
+[node name="PLAYERICON" type="TextureRect" parent="Status"]
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 181.0
+offset_bottom = 150.0
+texture = ExtResource("1_0cwtg")
+stretch_mode = 4
+
+[node name="IconBorder" type="ReferenceRect" parent="Status"]
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 172.0
+offset_bottom = 151.0
+border_color = Color(1, 1, 1, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="BG" type="ColorRect" parent="Status"]
+offset_left = 173.0
+offset_top = 11.0
+offset_right = 220.0
+offset_bottom = 38.0
+mouse_filter = 2
+
+[node name="HPLabel" type="Label" parent="Status"]
+offset_left = 166.0
+offset_top = 12.0
+offset_right = 235.0
+offset_bottom = 48.0
+text = "HP"
+label_settings = SubResource("LabelSettings_wsk2j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="Status"]
+offset_left = 633.0
+offset_top = 11.0
+offset_right = 725.0
+offset_bottom = 47.0
+text = "90 / 90"
+label_settings = SubResource("LabelSettings_wsk2j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPBar" type="ProgressBar" parent="Status"]
+offset_left = 220.0
+offset_top = 14.0
+offset_right = 627.0
+offset_bottom = 36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mps2u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dog22")
+show_percentage = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpsba6s4m7l5v"]
 
 [ext_resource type="Script" path="res://scripts/Personagens/Sora/SoraAttackBasic.gd" id="1_r8gef"]
-[ext_resource type="Texture2D" uid="uid://cat10xxtuiw3i" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash1.png" id="2_nvhmr"]
-[ext_resource type="Texture2D" uid="uid://cpaqqrx0fifsj" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash2.png" id="3_meoqr"]
-[ext_resource type="Texture2D" uid="uid://eu771pub3dy7" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash3.png" id="4_2ypqq"]
-[ext_resource type="Texture2D" uid="uid://cr2yihayprc18" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash4.png" id="5_bnwuc"]
+[ext_resource type="Texture2D" uid="uid://gknj7sfbw3h8" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU1.png" id="2_00gxl"]
+[ext_resource type="Texture2D" uid="uid://bugmgbi3bljct" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU2.png" id="3_q15jg"]
+[ext_resource type="Texture2D" uid="uid://c0i5v24euii8l" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU3.png" id="4_7cs2u"]
+[ext_resource type="Texture2D" uid="uid://d174qum6gyg3v" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU4.png" id="5_tm6vd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsi2p"]
 size = Vector2(259, 136)
@@ -13,7 +13,7 @@ size = Vector2(259, 136)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nvhmr")
+"texture": ExtResource("2_00gxl")
 }],
 "loop": false,
 "name": &"default",
@@ -24,7 +24,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_meoqr")
+"texture": ExtResource("3_q15jg")
 }],
 "loop": false,
 "name": &"default",
@@ -35,10 +35,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_2ypqq")
+"texture": ExtResource("4_7cs2u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bnwuc")
+"texture": ExtResource("5_tm6vd")
 }],
 "loop": false,
 "name": &"default",
@@ -46,6 +46,7 @@ animations = [{
 }]
 
 [node name="SoraAttackBasic" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_r8gef")
 
 [node name="colisor" type="CollisionShape2D" parent="."]

@@ -40,7 +40,8 @@ func updateDirection() -> void:
 		direction = Vector2(0, 0)
 		return
 	direction = self.position.direction_to(target.position).normalized()
-
+	$sprite.flip_h = true if direction.x < 0 else false
+	
 func checkAttacks() -> void:
 	if(target.position.distance_to(self.position) < 40):
 		mutex.lock()

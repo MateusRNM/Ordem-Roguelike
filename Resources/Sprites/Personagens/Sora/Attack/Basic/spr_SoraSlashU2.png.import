@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cat10xxtuiw3i"
-path="res://.godot/imported/spr_SoraSlash1.png-33c7fc0517b37b63284c4720d39f57b0.ctex"
+uid="uid://bugmgbi3bljct"
+path="res://.godot/imported/spr_SoraSlashU2.png-c972dc9c0e5757383b13914fd535e0c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash1.png"
-dest_files=["res://.godot/imported/spr_SoraSlash1.png-33c7fc0517b37b63284c4720d39f57b0.ctex"]
+source_file="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU2.png"
+dest_files=["res://.godot/imported/spr_SoraSlashU2.png-c972dc9c0e5757383b13914fd535e0c0.ctex"]
 
 [params]
 

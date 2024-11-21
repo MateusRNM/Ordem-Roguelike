@@ -1,6 +1,7 @@
 extends Area2D
 
 var reversedX : bool = false
+@onready var damageTakenLabel : PackedScene = preload("res://Objects/HUD/DamageTakenLabel.tscn")
 
 func _ready() -> void:
 	reversedX = true if GameVars.playerInstance.attackDirection.x == -1 else false
@@ -20,6 +21,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if(body is CharacterBody2D):
 		if(body.isEnemy):
 			body.HP -= GameVars.playerInstance.damage
+			var dmglbl = damageTakenLabel.instantiate()
+			dmglbl.damage = GameVars.playerInstance.damage
+			dmglbl.position += Vector2(0, -40)
+			body.add_child(dmglbl)
 
 func _on_sprite_part_1_animation_finished() -> void:
 	if(reversedX):

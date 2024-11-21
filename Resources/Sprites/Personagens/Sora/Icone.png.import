@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpaqqrx0fifsj"
-path="res://.godot/imported/spr_SoraSlash2.png-ca6dcb19057dbd13b35addee79f59bc7.ctex"
+uid="uid://dracstxtjyner"
+path="res://.godot/imported/Icone.png-e8c8eaa11e0a5fb9125ad9ae1f31f89e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlash2.png"
-dest_files=["res://.godot/imported/spr_SoraSlash2.png-ca6dcb19057dbd13b35addee79f59bc7.ctex"]
+source_file="res://Resources/Sprites/Personagens/Sora/Icone.png"
+dest_files=["res://.godot/imported/Icone.png-e8c8eaa11e0a5fb9125ad9ae1f31f89e.ctex"]
 
 [params]
 
