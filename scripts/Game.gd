@@ -9,15 +9,18 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	#print(GameVars.enemyQtd)
-	if(spawnerTimer >= 5):
-		if(GameVars.enemyQtd < 800):
+	if(spawnerTimer >= 2):
+		if(GameVars.enemyQtd < 500):
 			spawnEnemy(50)
 		spawnerTimer = 0
 	else:
 		spawnerTimer += delta
 	
-	if(GameVars.enemies != null):
-		WorkerThreadPool.add_group_task(Callable(EnemyProcessing), GameVars.enemies.size())
+	if(GameVars.XPInstances.size() != 0):
+		WorkerThreadPool.add_task(Callable(GameVars.XPInstances.all).bind(processXPs))
+	
+	if(GameVars.enemies.size() != 0):
+		WorkerThreadPool.add_task(Callable(GameVars.enemies.all).bind(EnemyProcessing))
 
 func spawnEnemy(qtd: int) -> void:
 	for i: int in qtd:
@@ -25,9 +28,16 @@ func spawnEnemy(qtd: int) -> void:
 		ins.position = ins.position + Vector2(RNG.randi_range(-800, 800), RNG.randi_range(-500, 500))
 		add_child(ins)
 		
-func EnemyProcessing(i: int) -> void:
-	if(GameVars.enemies.size() > i):
-		if(GameVars.enemies[i]):
-			GameVars.enemies[i].IaProcess()
+func EnemyProcessing(enemy: CharacterBody2D):
+	if(enemy != null):
+		enemy.IaProcess()
+		return true
 	else:
-		return
+		return false
+
+func processXPs(xp: Node2D):
+	if(xp != null):
+		xp.process()
+		return true
+	else:
+		return false

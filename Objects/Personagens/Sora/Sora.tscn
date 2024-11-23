@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dykqd6boq4grv"]
 
-[ext_resource type="Script" path="res://scripts/Personagens/Sora/Sora.gd" id="1_so3gs"]
+[ext_resource type="Script" path="res://Scripts/Personagens/Sora/Sora.gd" id="1_so3gs"]
 [ext_resource type="Texture2D" uid="uid://b6h7es2qntpo2" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC1.png" id="2_cwwr2"]
 [ext_resource type="Texture2D" uid="uid://l4exybltckig" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC2.png" id="3_1dths"]
 [ext_resource type="Texture2D" uid="uid://d2lebi4rb7s44" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC3.png" id="4_ehbsi"]

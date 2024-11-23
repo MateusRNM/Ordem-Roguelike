@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpsba6s4m7l5v"]
 
-[ext_resource type="Script" path="res://scripts/Personagens/Sora/SoraAttackBasic.gd" id="1_r8gef"]
+[ext_resource type="Script" path="res://Scripts/Personagens/Sora/SoraAttackBasic.gd" id="1_r8gef"]
 [ext_resource type="Texture2D" uid="uid://gknj7sfbw3h8" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU1.png" id="2_00gxl"]
 [ext_resource type="Texture2D" uid="uid://bugmgbi3bljct" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU2.png" id="3_q15jg"]
 [ext_resource type="Texture2D" uid="uid://c0i5v24euii8l" path="res://Resources/Sprites/Personagens/Sora/Attack/Basic/spr_SoraSlashU3.png" id="4_7cs2u"]

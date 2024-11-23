@@ -16,13 +16,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	defineTarget()
 	moveToTarget(delta)
+	
+	if(timer >= 0.25 && target == null):
+		self.queue_free()
+		
 	if(timer >= 2.5):
 		self.queue_free()
 	else:
 		timer += delta
 		
 func defineTarget() -> void:
-	var enemy : CharacterBody2D
+	var enemy : CharacterBody2D = null
 	for i: int in GameVars.enemiesOnScreen.size():
 		if(enemy == null):
 			enemy = GameVars.enemiesOnScreen[i] if GameVars.enemiesOnScreen[i] != null else null
@@ -34,16 +38,16 @@ func defineTarget() -> void:
 		
 func moveToTarget(delta: float):
 	if(target == null):
-		self.position += speed * direction * delta
+		self.global_position += speed * direction * delta
 		return
 		
-	rotate(get_angle_to(target.global_position))
+	rotation += get_angle_to(target.global_position)
 	
 	if(!canPass):
 		if(self.global_position.distance_to(target.global_position) > 16):
-			self.position += (target.global_position - self.global_position).normalized() * speed * delta
+			self.global_position += (target.global_position - global_position).normalized() * speed * delta 
 	else:
-		self.position += direction * speed * delta
+		self.global_position += direction * speed * delta
 		if(passTimer >= 0.4):
 			passTimer = 0
 			canPass = false
@@ -51,6 +55,9 @@ func moveToTarget(delta: float):
 			passTimer += delta
 
 func _on_body_entered(body: Node2D) -> void:
+	if(target == null):
+		self.global_position += speed * direction * get_process_delta_time()
+		return
 	if(body is CharacterBody2D):
 		if(body.isEnemy):
 			if(!canPass):
@@ -58,8 +65,8 @@ func _on_body_entered(body: Node2D) -> void:
 			body.HP -= GameVars.playerInstance.damage
 			var dmglbl = damageTakenLabel.instantiate()
 			dmglbl.damage = GameVars.playerInstance.damage
-			dmglbl.position += Vector2(0, -40)
-			body.add_child(dmglbl)
+			dmglbl.global_position = body.global_position + Vector2(0, -40)
+			body.get_parent().add_child(dmglbl)
 			canPass = true
 
 

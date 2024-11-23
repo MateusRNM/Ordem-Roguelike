@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbr6yen2tdibv"]
 
-[ext_resource type="Script" path="res://scripts/Inimigos/Morcegosa/Morcegosa.gd" id="1_8ey1l"]
+[ext_resource type="Script" path="res://Scripts/Inimigos/Morcegosa/Morcegosa.gd" id="1_8ey1l"]
 [ext_resource type="Texture2D" uid="uid://c1x7cahdeo056" path="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa1.png" id="2_gb2kw"]
 [ext_resource type="Texture2D" uid="uid://c01qddj1c8bkn" path="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa2.png" id="3_bu1kg"]
 [ext_resource type="Texture2D" uid="uid://baehqldvh5ra0" path="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa3.png" id="4_ocnq0"]

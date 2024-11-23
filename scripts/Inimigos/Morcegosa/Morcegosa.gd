@@ -2,26 +2,36 @@ extends CharacterBody2D
 
 var speed: int = 150
 var direction: Vector2 = Vector2(0, 0)
-@export var HP: float = 20
+@export var HP: float = 5
 @export var isEnemy: bool = true
 @export var canProcess : bool = true
 @export var isOnScreen : bool = false
 var damage: float = 1
 var target : CharacterBody2D
 var mutex : Mutex = Mutex.new()
+@onready var XPInstance: PackedScene = preload("res://Objects/XP/XPAzul.tscn")
+@onready var Sprite : AnimatedSprite2D = $sprite
 
 func _ready() -> void:
 	updateTarget()
-	GameVars.enemyQtd += 1
 	GameVars.enemies.append(self)
+	GameVars.enemyQtd += 1
 
 func _process(delta: float) -> void:
 	if(HP <= 0):
 		GameVars.enemyQtd -= 1
-		GameVars.enemies.remove_at(GameVars.enemies.find(self))
+		if(GameVars.enemies.find(self) != -1):
+			GameVars.enemies.remove_at(GameVars.enemies.find(self))
+		
+		dropXP()
 		self.queue_free()
-	
-func IaProcess() -> void: 
+
+func dropXP():
+	var xpIns = XPInstance.instantiate()
+	xpIns.position = self.position
+	get_parent().add_child(xpIns)
+
+func IaProcess() -> void:
 	if(!canProcess):
 		canProcess = true
 		return
@@ -40,12 +50,15 @@ func updateDirection() -> void:
 		direction = Vector2(0, 0)
 		return
 	direction = self.position.direction_to(target.position).normalized()
-	$sprite.flip_h = true if direction.x < 0 else false
+	Sprite.flip_h = true if direction.x < 0 else false
 	
 func checkAttacks() -> void:
+	if(target.invincible):
+		return
 	if(target.position.distance_to(self.position) < 40):
 		mutex.lock()
 		target.HP -= damage
+		target.invincible = true
 		mutex.unlock()
 
 
