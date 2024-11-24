@@ -1,0 +1,262 @@
+[gd_scene load_steps=6 format=3 uid="uid://2np4e2n56hvi"]
+
+[ext_resource type="FontFile" uid="uid://14fhd66c8k1p" path="res://Resources/Fonts/pixeledFont.otf" id="1_brqbq"]
+[ext_resource type="Script" path="res://Scripts/HUD/ConfigMenu.gd" id="1_p8p8n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdag"]
+resource_local_to_scene = true
+bg_color = Color(0.745353, 0.118102, 0.168786, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkm2u"]
+font = ExtResource("1_brqbq")
+font_size = 42
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0jp3"]
+content_margin_top = 8.0
+bg_color = Color(0.161084, 0.444774, 0.703451, 1)
+skew = Vector2(0.15, 0)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 12
+
+[node name="ConfigMenu" type="CanvasLayer"]
+script = ExtResource("1_p8p8n")
+
+[node name="pauseBG" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.631373)
+offset_right = 1921.0
+offset_bottom = 1084.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="ScrollContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_left = 661.0
+offset_top = 83.0
+offset_right = 1247.68
+offset_bottom = 937.04
+theme_override_styles/panel = SubResource("StyleBoxFlat_chdag")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ControlsContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/ControlsContainer/HBoxContainer"]
+layout_mode = 2
+text = "CIMA:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="upBtn" type="Button" parent="Panel/ControlsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "W"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ControlsContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/ControlsContainer/HBoxContainer2"]
+layout_mode = 2
+text = "BAIXO:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="downBtn" type="Button" parent="Panel/ControlsContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "W"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/ControlsContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/ControlsContainer/HBoxContainer3"]
+layout_mode = 2
+text = "ESQUERDA:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="leftBtn" type="Button" parent="Panel/ControlsContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "W"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/ControlsContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/ControlsContainer/HBoxContainer4"]
+layout_mode = 2
+text = "DIREITA:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="rightBtn" type="Button" parent="Panel/ControlsContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "W"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/ControlsContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/ControlsContainer/HBoxContainer5"]
+layout_mode = 2
+text = "MUDAR TIPO DE MIRA:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="aimBtn" type="Button" parent="Panel/ControlsContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "W"
+
+[node name="VideoContainer" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VideoContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/VideoContainer/HBoxContainer"]
+layout_mode = 2
+text = "RESOLUÇÃO:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="resolutionBtn" type="OptionButton" parent="Panel/VideoContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+alignment = 1
+selected = 2
+item_count = 4
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "640x480"
+popup/item_3/id = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VideoContainer"]
+layout_mode = 2
+
+[node name="Labels" type="Label" parent="Panel/VideoContainer/HBoxContainer2"]
+layout_mode = 2
+text = "MODO DE JANELA:"
+label_settings = SubResource("LabelSettings_lkm2u")
+
+[node name="windowBtn" type="OptionButton" parent="Panel/VideoContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 33
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "TELA CHEIA"
+popup/item_1/text = "MAXIMIZADO"
+popup/item_1/id = 1
+popup/item_2/text = "JANELA"
+popup/item_2/id = 2
+
+[node name="PanelLeft" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_left = 209.0
+offset_top = 83.0
+offset_right = 610.68
+offset_bottom = 939.04
+theme_override_styles/panel = SubResource("StyleBoxFlat_chdag")
+
+[node name="VideoBtn" type="Button" parent="PanelLeft"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 50.0
+offset_right = 410.0
+offset_bottom = 107.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0jp3")
+action_mode = 0
+text = "VÍDEO"
+
+[node name="ControlBtn" type="Button" parent="PanelLeft"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 150.0
+offset_right = 410.0
+offset_bottom = 207.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0jp3")
+action_mode = 0
+text = "CONTROLES"
+
+[node name="BackBtn" type="Button" parent="PanelLeft"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 250.0
+offset_right = 410.0
+offset_bottom = 307.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_brqbq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d0jp3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d0jp3")
+action_mode = 0
+text = "VOLTAR"
+
+[connection signal="pressed" from="Panel/ControlsContainer/HBoxContainer/upBtn" to="." method="_on_up_btn_pressed"]
+[connection signal="pressed" from="Panel/ControlsContainer/HBoxContainer2/downBtn" to="." method="_on_down_btn_pressed"]
+[connection signal="pressed" from="Panel/ControlsContainer/HBoxContainer3/leftBtn" to="." method="_on_left_btn_pressed"]
+[connection signal="pressed" from="Panel/ControlsContainer/HBoxContainer4/rightBtn" to="." method="_on_right_btn_pressed"]
+[connection signal="pressed" from="Panel/ControlsContainer/HBoxContainer5/aimBtn" to="." method="_on_aim_btn_pressed"]
+[connection signal="item_selected" from="Panel/VideoContainer/HBoxContainer/resolutionBtn" to="." method="_on_resolution_btn_item_selected"]
+[connection signal="item_selected" from="Panel/VideoContainer/HBoxContainer2/windowBtn" to="." method="_on_window_btn_item_selected"]
+[connection signal="pressed" from="PanelLeft/VideoBtn" to="." method="_on_video_btn_pressed"]
+[connection signal="pressed" from="PanelLeft/ControlBtn" to="." method="_on_control_btn_pressed"]
+[connection signal="pressed" from="PanelLeft/BackBtn" to="." method="_on_back_btn_pressed"]

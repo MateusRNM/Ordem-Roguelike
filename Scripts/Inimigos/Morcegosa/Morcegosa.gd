@@ -18,6 +18,13 @@ func _ready() -> void:
 	GameVars.enemyQtd += 1
 
 func _process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		Sprite.stop()
+		return
+	else:
+		if(!Sprite.is_playing()):
+			Sprite.play()
+			
 	if(HP <= 0):
 		GameVars.enemyQtd -= 1
 		if(GameVars.enemies.find(self) != -1):

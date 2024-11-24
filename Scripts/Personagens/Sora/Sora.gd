@@ -9,7 +9,7 @@ var attackByKeyboard: bool = true
 var attackTimer: float = 0
 var BasicAttackInterval: float = 1.5
 var AwakenedAttackInterval: float = 3
-var isAttackAwakened : bool = true
+var isAttackAwakened : bool = false
 var invincibleTimer: float = 0
 @export var XPGrabRange: int = 100
 @export var invincible: bool = false
@@ -28,6 +28,13 @@ func _ready() -> void:
 	GameVars.playerInstance = self
 
 func _process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		Sprite.stop()
+		return
+	else:
+		if(!Sprite.is_playing()):
+			Sprite.play()
+			
 	if(HP <= 0):
 		pass
 	verifyLvl()
@@ -45,9 +52,9 @@ func verifyLvl():
 		XpToUp *= 1.25
 
 func checkInputs() -> void:
-	if(Input.is_action_just_pressed("ClickLeft")):
+	if(Input.is_action_just_pressed("changeAimType")):
 		attackByKeyboard = !attackByKeyboard
-	direction = Vector2(Input.get_axis("A", "D"), Input.get_axis("W", "S"))
+	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	if(attackByKeyboard):
 		attackDirection = direction if direction != Vector2.ZERO else attackDirection
 		attackDirectionPos = direction if direction != Vector2.ZERO else attackDirection
@@ -125,7 +132,7 @@ func attackBasic() -> void:
 		ins.rotation_degrees = -300
 		
 	if(!attackByKeyboard):
-		ins.rotation_degrees += ins.global_position.angle_to(attackDirectionPos)
+		ins.rotation_degrees += get_angle_to(attackDirectionPos)
 		
 	add_child(ins)
 

@@ -46,7 +46,9 @@ animations = [{
 }]
 
 [node name="SoraAttackBasic" type="Area2D"]
+collision_layer = 2
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_r8gef")
 
 [node name="colisor" type="CollisionShape2D" parent="."]

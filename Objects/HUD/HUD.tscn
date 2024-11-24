@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dracstxtjyner" path="res://Resources/Sprites/Personagens/Sora/Icone.png" id="1_0cwtg"]
 [ext_resource type="Script" path="res://Scripts/HUD/HUD.gd" id="1_flne4"]
-[ext_resource type="FontFile" uid="uid://dhc1q1qn477x7" path="res://Resources/Fonts/pixeledFont.otf" id="2_qix0k"]
+[ext_resource type="FontFile" uid="uid://14fhd66c8k1p" path="res://Resources/Fonts/pixeledFont.otf" id="2_qix0k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsk2j"]
 font = ExtResource("2_qix0k")
-font_size = 44
+font_size = 25
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
@@ -61,18 +61,18 @@ mouse_filter = 2
 [node name="HPLabel" type="Label" parent="Status"]
 offset_left = 174.0
 offset_top = 36.0
-offset_right = 243.0
-offset_bottom = 72.0
+offset_right = 236.0
+offset_bottom = 68.0
 text = "HP"
 label_settings = SubResource("LabelSettings_wsk2j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HP" type="Label" parent="Status"]
-offset_left = 641.0
-offset_top = 35.0
-offset_right = 733.0
-offset_bottom = 71.0
+offset_left = 642.0
+offset_top = 32.0
+offset_right = 734.0
+offset_bottom = 68.0
 text = "90 / 90"
 label_settings = SubResource("LabelSettings_wsk2j")
 horizontal_alignment = 1
@@ -96,10 +96,10 @@ value = 50.0
 show_percentage = false
 
 [node name="LVL" type="Label" parent="Status"]
-offset_left = 1773.0
+offset_left = 1589.0
 offset_top = 41.0
-offset_right = 1912.0
-offset_bottom = 93.0
+offset_right = 1919.0
+offset_bottom = 106.0
 text = "LVL 1"
 label_settings = SubResource("LabelSettings_wx347")
 horizontal_alignment = 1

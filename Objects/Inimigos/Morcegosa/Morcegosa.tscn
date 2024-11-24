@@ -28,6 +28,7 @@ radius = 24.0832
 [node name="Morcegosa" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
+safe_margin = 4.0
 script = ExtResource("1_8ey1l")
 
 [node name="visibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]

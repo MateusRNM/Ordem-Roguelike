@@ -20,6 +20,7 @@ size = Vector2(146, 13)
 [node name="SoraAttackAwakened" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_rtrar")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

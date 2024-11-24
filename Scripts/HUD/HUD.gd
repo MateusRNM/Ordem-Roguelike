@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	if(GameVars.playerInstance != null):
 		HPBar.max_value = GameVars.playerInstance.HPMax
 		HPBar.value = GameVars.playerInstance.HP
+		XPBar.max_value = GameVars.playerInstance.XpToUp
 		XPBar.value = GameVars.playerInstance.XP
 		LvlLabel.text = "LVL " + String.num_int64(GameVars.playerInstance.LVL)
 		HPLabel.text = String.num_int64(GameVars.playerInstance.HP) + " / " + String.num_int64(GameVars.playerInstance.HPMax)

@@ -14,6 +14,8 @@ func _ready() -> void:
 		direction = GameVars.playerInstance.attackDirectionPos
 
 func _process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		return
 	defineTarget()
 	moveToTarget(delta)
 	

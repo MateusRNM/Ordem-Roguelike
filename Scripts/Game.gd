@@ -3,14 +3,25 @@ extends Node2D
 var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 var spawnerTimer: float = 0
 var HudInstance: PackedScene = preload("res://Objects/HUD/HUD.tscn")
+var PauseInstance: PackedScene = preload("res://Objects/HUD/Pause.tscn")
 
 func _ready() -> void:
+	GameVars.loadData()
+	GameVars.settingUp()
 	add_child(HudInstance.instantiate())
 	
 func _process(delta: float) -> void:
 	#print(GameVars.enemyQtd)
+	if(GameVars.isGamePaused):
+		return
+		
+		
+	if(Input.is_action_just_pressed("ESC") && !GameVars.isGamePaused):
+		add_child(PauseInstance.instantiate())
+		GameVars.isGamePaused = true
+	
 	if(spawnerTimer >= 2):
-		if(GameVars.enemyQtd < 500):
+		if(GameVars.enemyQtd < 800):
 			spawnEnemy(50)
 		spawnerTimer = 0
 	else:

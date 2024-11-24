@@ -20,6 +20,22 @@ func _ready() -> void:
 		spritePart3.visible = false
 		spritePart1.play("default")
 
+func _process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		if(spritePart1.is_playing()):
+			spritePart1.pause()
+		elif(spritePart2.is_playing()):
+			spritePart2.pause()
+		elif(spritePart3.is_playing()):
+			spritePart3.pause()
+	else:
+		if(!spritePart1.is_playing()):
+			spritePart1.play()
+		elif(!spritePart2.is_playing()):
+			spritePart2.play()
+		elif(!spritePart3.is_playing()):
+			spritePart3.play()
+
 func _on_body_entered(body: Node2D) -> void:
 	if(body is CharacterBody2D):
 		if(body.isEnemy):

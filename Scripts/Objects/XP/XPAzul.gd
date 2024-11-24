@@ -3,6 +3,7 @@ extends Node2D
 var XPValue: int = 10
 @onready var initialPos: Vector2 = position
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var Sprite : AnimatedSprite2D = $AnimationPlayer/sprite
 var anim : Animation
 var isOnScreen : bool = true
 
@@ -14,6 +15,17 @@ func _ready() -> void:
 	animationPlayer.get_animation_library("").add_animation("other", anim)
 	animationPlayer.play("other")
 	GameVars.XPInstances.append(self)
+
+func _process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		animationPlayer.pause()
+		Sprite.pause()
+	else:
+		if(!animationPlayer.is_playing()):
+			animationPlayer.play()
+		
+		if(!Sprite.is_playing()):
+			Sprite.play()
 
 func process():
 	if(!isOnScreen):

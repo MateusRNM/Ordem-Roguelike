@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://lfpn5825vryj"]
+
+[ext_resource type="Script" path="res://Scripts/HUD/Pause.gd" id="1_o7oe8"]
+[ext_resource type="FontFile" uid="uid://14fhd66c8k1p" path="res://Resources/Fonts/pixeledFont.otf" id="2_cx2or"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dnyi"]
+bg_color = Color(0.745353, 0.118102, 0.168786, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.205117, 0.205117, 0.205117, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qi4w"]
+content_margin_top = 8.0
+bg_color = Color(0.161084, 0.444774, 0.703451, 1)
+skew = Vector2(0.15, 0)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 12
+
+[node name="Pause" type="CanvasLayer"]
+script = ExtResource("1_o7oe8")
+
+[node name="pauseBG" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.631373)
+offset_right = 1921.0
+offset_bottom = 1084.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.021
+anchor_bottom = 0.037
+offset_left = 650.0
+offset_top = 83.0
+offset_right = 1250.68
+offset_bottom = 939.04
+theme_override_styles/panel = SubResource("StyleBoxFlat_3dnyi")
+
+[node name="ContinueBtn" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 50.0
+offset_right = 508.0
+offset_bottom = 107.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_cx2or")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8qi4w")
+action_mode = 0
+text = "CONTINUAR"
+
+[node name="ConfigsBtn" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 150.0
+offset_right = 508.0
+offset_bottom = 207.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_cx2or")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8qi4w")
+action_mode = 0
+text = "CONFIGURAÇÕES"
+
+[node name="QuitBtn" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 250.0
+offset_right = 508.0
+offset_bottom = 307.0
+focus_mode = 0
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_cx2or")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8qi4w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8qi4w")
+action_mode = 0
+text = "SAIR"
+
+[connection signal="pressed" from="Panel/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="Panel/ConfigsBtn" to="." method="_on_configs_btn_pressed"]
+[connection signal="pressed" from="Panel/QuitBtn" to="." method="_on_quit_btn_pressed"]

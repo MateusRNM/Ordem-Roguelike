@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Ordem Roguelike"
 config/version="1.0"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://scenes/Game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 boot_splash/show_image=false
@@ -36,40 +36,44 @@ window/vsync/vsync_mode=0
 
 [input]
 
-W={
+up={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-A={
+left={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-S={
+down={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-D={
+right={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-ClickLeft={
+changeAimType={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+ESC={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
 [physics]
 
 2d/run_on_separate_thread=true
-common/physics_ticks_per_second=10
+common/physics_ticks_per_second=20
 common/max_physics_steps_per_frame=2
 2d/physics_engine="Rapier2D"
 2d/solver/solver_iterations=4
-common/solver/length_unit_2d=100.0
 
 [rendering]
 
@@ -83,6 +87,7 @@ driver/depth_prepass/enable=false
 textures/default_filters/use_nearest_mipmap_filter=true
 environment/ssao/quality=1
 environment/ssil/quality=1
+anti_aliasing/screen_space_roughness_limiter/enabled=false
 occlusion_culling/occlusion_rays_per_thread=256
 environment/glow/upscale_mode=0
 environment/volumetric_fog/use_filter=0
