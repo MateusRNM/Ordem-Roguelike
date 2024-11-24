@@ -18,6 +18,8 @@ func _ready() -> void:
 	GameVars.enemyQtd += 1
 
 func _process(delta: float) -> void:
+	if(!isOnScreen):
+		return
 	if(GameVars.isGamePaused):
 		Sprite.stop()
 		return
@@ -70,10 +72,12 @@ func checkAttacks() -> void:
 
 
 func _on_visible_notifier_screen_entered() -> void:
+	Sprite.show()
 	isOnScreen = true
 	GameVars.enemiesOnScreen.append(self)
 
 
 func _on_visible_notifier_screen_exited() -> void:
+	Sprite.hide()
 	isOnScreen = false
 	GameVars.enemiesOnScreen.remove_at(GameVars.enemiesOnScreen.find(self))

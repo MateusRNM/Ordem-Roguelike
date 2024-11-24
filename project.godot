@@ -22,10 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameVars="*res://Scripts/GameVars.gd"
-
-[debug]
-
-settings/stdout/print_fps=true
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -33,6 +30,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
@@ -74,6 +75,7 @@ common/physics_ticks_per_second=20
 common/max_physics_steps_per_frame=2
 2d/physics_engine="Rapier2D"
 2d/solver/solver_iterations=4
+rapier/solver/length_unit_2d=50.0
 
 [rendering]
 

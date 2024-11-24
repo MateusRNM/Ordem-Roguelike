@@ -84,6 +84,8 @@ sprite_frames = SubResource("SpriteFrames_im676")
 autoplay = "default"
 
 [node name="visibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53674e-07, 8.07201)
+scale = Vector2(1.2, 1.8)
 
 [connection signal="screen_entered" from="visibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_entered"]
 [connection signal="screen_exited" from="visibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_exited"]

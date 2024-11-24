@@ -17,6 +17,8 @@ func _ready() -> void:
 	GameVars.XPInstances.append(self)
 
 func _process(delta: float) -> void:
+	if(!isOnScreen):
+		return
 	if(GameVars.isGamePaused):
 		animationPlayer.pause()
 		Sprite.pause()
@@ -42,12 +44,14 @@ func verify():
 
 
 func _on_visible_on_screen_notifier_screen_entered() -> void:
+	Sprite.show()
 	isOnScreen = true
 	set_physics_process(true)
 	animationPlayer.play("other")
 
 
 func _on_visible_on_screen_notifier_screen_exited() -> void:
+	Sprite.hide()
 	isOnScreen = false
 	set_physics_process(false)
-	animationPlayer.stop()
+	animationPlayer.pause()

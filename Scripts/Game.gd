@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 		GameVars.isGamePaused = true
 	
 	if(spawnerTimer >= 2):
-		if(GameVars.enemyQtd < 800):
-			spawnEnemy(50)
+		if(GameVars.enemyQtd < 1000):
+			spawnEnemy(200)
 		spawnerTimer = 0
 	else:
 		spawnerTimer += delta

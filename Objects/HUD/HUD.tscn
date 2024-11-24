@@ -104,3 +104,13 @@ text = "LVL 1"
 label_settings = SubResource("LabelSettings_wx347")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FPS" type="Label" parent="."]
+offset_left = 1577.0
+offset_top = 124.0
+offset_right = 1907.0
+offset_bottom = 189.0
+text = "FPS: "
+label_settings = SubResource("LabelSettings_wx347")
+horizontal_alignment = 1
+vertical_alignment = 1
