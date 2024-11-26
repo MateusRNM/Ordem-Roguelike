@@ -36,5 +36,5 @@ shape = SubResource("RectangleShape2D_3i32j")
 position = Vector2(0.500002, 1.5)
 scale = Vector2(7.35, 0.85)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="visibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_exited"]

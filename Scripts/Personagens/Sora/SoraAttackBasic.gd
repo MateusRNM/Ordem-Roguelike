@@ -36,15 +36,6 @@ func _process(delta: float) -> void:
 		elif(!spritePart3.is_playing()):
 			spritePart3.play()
 
-func _on_body_entered(body: Node2D) -> void:
-	if(body is CharacterBody2D):
-		if(body.isEnemy):
-			body.HP -= GameVars.playerInstance.damage
-			var dmglbl = damageTakenLabel.instantiate()
-			dmglbl.damage = GameVars.playerInstance.damage
-			dmglbl.global_position = body.global_position + Vector2(0, -40)
-			body.get_parent().add_child(dmglbl)
-
 func _on_sprite_part_1_animation_finished() -> void:
 	if(reversedX):
 		self.queue_free()
@@ -72,3 +63,14 @@ func _on_sprite_part_3_animation_finished() -> void:
 		spritePart2.play("default")
 	else:
 		self.queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if(!area.is_in_group("enemy")):
+		return
+	
+	area.HP -= GameVars.playerInstance.damage
+	var dmglbl = damageTakenLabel.instantiate()
+	dmglbl.damage = GameVars.playerInstance.damage
+	dmglbl.global_position = area.global_position + Vector2(0, -40)
+	area.get_parent().add_child(dmglbl)

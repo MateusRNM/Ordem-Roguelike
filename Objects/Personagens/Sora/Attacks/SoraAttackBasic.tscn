@@ -73,7 +73,7 @@ scale = Vector2(2, 2.5)
 sprite_frames = SubResource("SpriteFrames_llday")
 frame_progress = 1.0
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="spritePart1" to="." method="_on_sprite_part_1_animation_finished"]
 [connection signal="animation_finished" from="spritePart2" to="." method="_on_sprite_part_2_animation_finished"]
 [connection signal="animation_finished" from="spritePart3" to="." method="_on_sprite_part_3_animation_finished"]

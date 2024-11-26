@@ -28,8 +28,8 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
+window/stretch/mode="viewport"
+window/vsync/vsync_mode=3
 
 [editor_plugins]
 
@@ -74,8 +74,18 @@ ESC={
 common/physics_ticks_per_second=20
 common/max_physics_steps_per_frame=2
 2d/physics_engine="Rapier2D"
-2d/solver/solver_iterations=4
-rapier/solver/length_unit_2d=50.0
+3d/solver/contact_max_separation=0.06
+3d/solver/contact_max_allowed_penetration=0.001
+2d/default_gravity=0.0
+2d/default_linear_damp=30.0
+2d/default_angular_damp=30.0
+2d/solver/solver_iterations=2
+2d/solver/contact_max_separation=2.0
+2d/solver/contact_max_allowed_penetration=0.15
+rapier/solver/num_internal_pgs_iterations=2
+rapier/solver/num_internal_stabilization_iterations=1
+rapier/solver/num_iterations=1
+rapier/solver/max_ccd_substeps=0
 
 [rendering]
 
@@ -93,4 +103,6 @@ anti_aliasing/screen_space_roughness_limiter/enabled=false
 occlusion_culling/occlusion_rays_per_thread=256
 environment/glow/upscale_mode=0
 environment/volumetric_fog/use_filter=0
-mesh_lod/lod_change/threshold_pixels=2.0
+mesh_lod/lod_change/threshold_pixels=1024.0
+2d/sdf/oversize=0
+2d/sdf/scale=2
