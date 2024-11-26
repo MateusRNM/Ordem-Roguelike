@@ -36,7 +36,7 @@ func process():
 
 func verify():
 	if(GameVars.playerInstance != null):
-		if(self.global_position.distance_to(GameVars.playerInstance.global_position) <= GameVars.playerInstance.XPGrabRange):
+		if(self.global_position.distance_to(GameVars.playerInstance.global_position) <= GameVars.playerInstance.GrabRange):
 			GameVars.playerInstance.XP += XPValue
 			if(GameVars.XPInstances.find(self) != -1):
 				GameVars.XPInstances.remove_at(GameVars.XPInstances.find(self))

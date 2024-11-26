@@ -11,7 +11,10 @@ var BasicAttackInterval: float = 1.5
 var AwakenedAttackInterval: float = 3
 var isAttackAwakened : bool = false
 var invincibleTimer: float = 0
-@export var XPGrabRange: int = 100
+@export var regenValue : int = 2
+@export var regenTimer : float = 0
+@export var regenTimerMax : float = 5
+@export var GrabRange: int = 100
 @export var invincible: bool = false
 @export var LVL: int = 1
 @export var XP: int = 0
@@ -37,6 +40,7 @@ func _process(delta: float) -> void:
 	if(HP <= 0):
 		pass
 	verifyLvl()
+	regenHP(delta)
 	invincibleHandler(delta)
 	checkInputs()
 	updateSprite()
@@ -49,6 +53,15 @@ func verifyLvl():
 		LVL += 1
 		XP -= XpToUp
 		XpToUp *= 1.25
+
+func regenHP(delta: float):
+	if(regenTimer >= regenTimerMax):
+		HP += regenValue
+		if(HP > HPMax):
+			HP = HPMax
+		regenTimer = 0
+	else:
+		regenTimer += delta
 
 func checkInputs() -> void:
 	if(Input.is_action_just_pressed("changeAimType")):

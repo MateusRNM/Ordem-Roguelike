@@ -17,7 +17,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 16.0
+"speed": 15.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5p074"]
@@ -28,7 +28,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 16.0
+"speed": 15.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_llday"]
@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 16.0
+"speed": 15.0
 }]
 
 [node name="SoraAttackBasic" type="Area2D"]
@@ -52,23 +52,23 @@ monitorable = false
 script = ExtResource("1_r8gef")
 
 [node name="colisor" type="CollisionShape2D" parent="."]
-position = Vector2(53.5, -1)
+position = Vector2(30.5, 1)
 shape = SubResource("RectangleShape2D_jsi2p")
 
 [node name="spritePart1" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 40)
+position = Vector2(-24, 42)
 scale = Vector2(2, 2.5)
 sprite_frames = SubResource("SpriteFrames_hu5pu")
 frame_progress = 1.0
 
 [node name="spritePart2" type="AnimatedSprite2D" parent="."]
-position = Vector2(55, -4)
+position = Vector2(32, -2)
 scale = Vector2(2, 2.5)
 sprite_frames = SubResource("SpriteFrames_5p074")
 frame_progress = 1.0
 
 [node name="spritePart3" type="AnimatedSprite2D" parent="."]
-position = Vector2(49, -53)
+position = Vector2(26, -51)
 scale = Vector2(2, 2.5)
 sprite_frames = SubResource("SpriteFrames_llday")
 frame_progress = 1.0

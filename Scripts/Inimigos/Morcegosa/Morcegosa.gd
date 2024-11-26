@@ -91,4 +91,4 @@ func _on_area_entered(area: Area2D) -> void:
 		velocity += (global_position - area.global_position).normalized() * speed
 
 func moveOut(area : Area2D):
-	area.global_position += direction * speed/10 * -1 * get_physics_process_delta_time()
+	area.global_position = lerp(area.global_position, area.global_position + direction * speed/15 * -1 * get_physics_process_delta_time(), 0.05)

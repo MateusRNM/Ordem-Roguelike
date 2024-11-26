@@ -12,7 +12,7 @@ func _ready() -> void:
 	add_child(HudInstance.instantiate())
 	
 func _process(delta: float) -> void:
-	#print(GameVars.enemyQtd)
+	print(GameVars.enemyQtd)
 	if(GameVars.isGamePaused):
 		return
 		
@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 	
 	if(spawnerTimer >= 1):
 		
-		if(GameVars.enemyQtd < 500):
-			spawnEnemy(10)
+		if(GameVars.enemyQtd < 1000):
+			spawnEnemy(20)
 		spawnerTimer = 0
 	else:
 		spawnerTimer += delta
