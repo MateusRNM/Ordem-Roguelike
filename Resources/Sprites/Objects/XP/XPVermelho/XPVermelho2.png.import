@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyl2osdw00xxb"
-path="res://.godot/imported/spr_Exp1.5.png-8db568e8da62ea4bdda44efa382f2f53.ctex"
+uid="uid://cnnk1u5455h5d"
+path="res://.godot/imported/XPVermelho2.png-d7653e2c3c9b9203d894899a77b6c5ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Objects/XP/XP Azul/spr_Exp1.5.png"
-dest_files=["res://.godot/imported/spr_Exp1.5.png-8db568e8da62ea4bdda44efa382f2f53.ctex"]
+source_file="res://Resources/Sprites/Objects/XP/XPVermelho/XPVermelho2.png"
+dest_files=["res://.godot/imported/XPVermelho2.png-d7653e2c3c9b9203d894899a77b6c5ef.ctex"]
 
 [params]
 

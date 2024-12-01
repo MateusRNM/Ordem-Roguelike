@@ -17,7 +17,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5p074"]
@@ -28,7 +28,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_llday"]
@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 15.0
+"speed": 10.0
 }]
 
 [node name="SoraAttackBasic" type="Area2D"]

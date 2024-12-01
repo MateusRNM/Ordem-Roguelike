@@ -1,10 +1,14 @@
 extends Node
 
 @export var playerInstance : CharacterBody2D
+
+
 @export var enemyQtd : int = 0
+@export var enemiesOnScreen : Array
 @export var enemies : Array
 @export var XPInstances : Array
-@export var enemiesOnScreen : Array
+
+
 @export var isGamePaused : bool = false
 @export var gameConfigs : Dictionary
 
@@ -49,7 +53,6 @@ func loadData():
 	else:
 		createData()
 	
-
 func createData():
 	var save = FileAccess.open("user://save.data", FileAccess.WRITE)
 	gameConfigs = {

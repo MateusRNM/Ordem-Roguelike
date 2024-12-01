@@ -1,13 +1,27 @@
 extends Node2D
 
-var XPValue: int = 10
+var XPValue: int = 0
+@export var xpColor : String = ""
 @onready var initialPos: Vector2 = position
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
-@onready var Sprite : AnimatedSprite2D = $AnimationPlayer/sprite
+@onready var Sprite : AnimatedSprite2D
+@onready var SpriteAzul : AnimatedSprite2D = $AnimationPlayer/spriteAzul
+@onready var SpriteVermelho : AnimatedSprite2D = $AnimationPlayer/spriteVermelho
 var anim : Animation
 var isOnScreen : bool = true
 
 func _ready() -> void:
+	if(xpColor == "azul"):
+		XPValue = 10
+		SpriteAzul.visible = true
+		animationPlayer.root_node = SpriteAzul.get_path()
+		Sprite = SpriteAzul
+	elif(xpColor == "vermelho"):
+		XPValue = 75
+		SpriteVermelho.visible = true
+		animationPlayer.root_node = SpriteVermelho.get_path()
+		Sprite = SpriteVermelho
+	
 	anim = animationPlayer.get_animation("flutuar").duplicate()
 	anim.track_set_key_value(0, 0, initialPos)
 	anim.track_set_key_value(0, 1, initialPos + Vector2(0, 10))

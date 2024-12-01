@@ -21,50 +21,33 @@ func _process(delta: float) -> void:
 		add_child(PauseInstance.instantiate())
 		GameVars.isGamePaused = true
 	
-	if(spawnerTimer >= 1):
+	if(spawnerTimer >= 2):
 		
-		if(GameVars.enemyQtd < 1000):
-			spawnEnemy(20)
+		if(GameVars.enemyQtd < 600):
+			workerThread.add_task(Callable(spawnEnemy).bind(5))
 		spawnerTimer = 0
 	else:
 		spawnerTimer += delta
 	
-	if(GameVars.XPInstances.size() != 0):
-		if(GameVars.XPInstances.size() >= 100):
-			workerThread.add_task(Callable(processXPs).bind(0, GameVars.XPInstances.size()/4))
-			workerThread.add_task(Callable(processXPs).bind(GameVars.XPInstances.size()/4, GameVars.XPInstances.size()/2))
-			workerThread.add_task(Callable(processXPs).bind(GameVars.XPInstances.size()/2, GameVars.XPInstances.size()/2 + GameVars.XPInstances.size()/4))
-			workerThread.add_task(Callable(processXPs).bind(GameVars.XPInstances.size()/2 + GameVars.XPInstances.size()/4, GameVars.XPInstances.size()))
-		else:
-			workerThread.add_task(Callable(processXPs).bind(0, GameVars.XPInstances.size()/2))
-			workerThread.add_task(Callable(processXPs).bind(GameVars.XPInstances.size()/2, GameVars.XPInstances.size()))
-		
-	if(GameVars.enemies.size() != 0):
-		if(GameVars.enemies.size() >= 100):
-			workerThread.add_task(Callable(EnemyProcessing).bind(0, GameVars.enemies.size()/4))
-			workerThread.add_task(Callable(EnemyProcessing).bind(GameVars.enemies.size()/4, GameVars.enemies.size()/2))
-			workerThread.add_task(Callable(EnemyProcessing).bind(GameVars.enemies.size()/2, GameVars.enemies.size()/2 + GameVars.enemies.size()/4))
-			workerThread.add_task(Callable(EnemyProcessing).bind(GameVars.enemies.size()/2 + GameVars.enemies.size()/4, GameVars.enemies.size()))
-		else:
-			workerThread.add_task(Callable(EnemyProcessing).bind(0, GameVars.enemies.size()/2))
-			workerThread.add_task(Callable(EnemyProcessing).bind(GameVars.enemies.size()/2, GameVars.enemies.size()))
+	workerThread.add_task(Callable(GameVars.XPInstances.all).bind(processXPs))
+	workerThread.add_task(Callable(GameVars.enemies.all).bind(EnemyProcessing))
 
 func spawnEnemy(qtd: int) -> void:
 	for i: int in qtd:
 		var ins : Area2D = load("res://Objects/Inimigos/Morcegosa/Morcegosa.tscn").instantiate()
 		ins.position = ins.position + Vector2(RNG.randi_range(-800, 800), RNG.randi_range(-500, 500))
-		add_child(ins)
+		call_deferred("add_child", ins)
 		
-func EnemyProcessing(i: int, qtd: int) -> void:
-	for x: int in range(i, qtd):
-		if(GameVars.enemies.size()-1 < x):
-			return
-		if(GameVars.enemies[x] != null):
-			GameVars.enemies[x].IaProcess()
+func EnemyProcessing(enemy : Area2D) -> bool:
+	if(enemy != null):
+		enemy.IaProcess()
+		return true
+	else:
+		return false
 
-func processXPs(i: int, qtd: int) -> void:
-	for x: int in range(i, qtd):
-		if(GameVars.XPInstances.size()-1 < x):
-			return
-		if(GameVars.XPInstances[x] != null):
-			GameVars.XPInstances[x].process()
+func processXPs(xp : Node2D) -> bool:
+	if(xp != null):
+		xp.process()
+		return true
+	else:
+		return false

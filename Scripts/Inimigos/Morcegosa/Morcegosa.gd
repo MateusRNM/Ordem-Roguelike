@@ -1,16 +1,19 @@
 extends Area2D
 
-var speed: int = 120
+var speed: int = 100
 var direction: Vector2 = Vector2(0, 0)
-var velocity : Vector2 = Vector2.ZERO
+@export var knockback : Vector2 = Vector2.ZERO
+@export var knockback_resistance : float = 1
 @export var HP: float = 5
 @export var isOnScreen : bool = false
 var damage: float = 1
 var target : CharacterBody2D
 var mutex : Mutex = Mutex.new()
-@onready var XPInstance: PackedScene = preload("res://Objects/XP/XPAzul.tscn")
+@onready var XPInstance: PackedScene = preload("res://Objects/XP/XP.tscn")
 @onready var Sprite : AnimatedSprite2D = $sprite
 @onready var colisor : CollisionShape2D = $Colisor
+var RNG = RandomNumberGenerator.new()
+var frameCount : int = RNG.randi_range(0, 16)
 
 func _ready() -> void:
 	target = GameVars.playerInstance
@@ -30,14 +33,27 @@ func _process(delta: float) -> void:
 			
 	if(HP <= 0):
 		GameVars.enemyQtd -= 1
-		if(GameVars.enemies.find(self) != -1):
-			GameVars.enemies.remove_at(GameVars.enemies.find(self))
+		GameVars.enemies.remove_at(GameVars.enemies.find(self))
 		
 		dropXP()
 		self.queue_free()
 
+func _physics_process(delta: float) -> void:
+	if(GameVars.isGamePaused):
+		return
+	
+	if(frameCount < 16):
+		frameCount += 1
+		return
+	else:
+		frameCount = 0
+	
+	for i : Area2D in get_overlapping_areas():
+		i.knockback = global_position.direction_to(i.global_position) * speed*1.8 * delta
+
 func dropXP():
 	var xpIns = XPInstance.instantiate()
+	xpIns.xpColor = "azul"
 	xpIns.position = self.position
 	get_parent().add_child(xpIns)
 
@@ -63,9 +79,10 @@ func checkAttacks() -> void:
 		target.invincible = true
 		mutex.unlock()
 
-func move():
-	global_position += speed * direction * get_process_delta_time()
-
+func move() -> void:
+	knockback = knockback.move_toward(Vector2.ZERO, knockback_resistance)
+	global_position += speed * direction * get_physics_process_delta_time() + knockback
+		
 func _on_visible_notifier_screen_entered() -> void:
 	Sprite.show()
 	isOnScreen = true
@@ -75,20 +92,3 @@ func _on_visible_notifier_screen_entered() -> void:
 func _on_visible_notifier_screen_exited() -> void:
 	Sprite.hide()
 	isOnScreen = false
-	GameVars.enemiesOnScreen.remove_at(GameVars.enemiesOnScreen.find(self))
-
-
-func  _physics_process(delta: float) -> void:
-	if(GameVars.isGamePaused):
-		return
-	global_position += velocity * delta
-	get_overlapping_areas().all(moveOut)
-	velocity *= 0.9
-	
-
-func _on_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("enemy")):
-		velocity += (global_position - area.global_position).normalized() * speed
-
-func moveOut(area : Area2D):
-	area.global_position = lerp(area.global_position, area.global_position + direction * speed/15 * -1 * get_physics_process_delta_time(), 0.05)

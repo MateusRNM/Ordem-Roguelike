@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dygjrqlriiaw3"]
+[gd_scene load_steps=11 format=3 uid="uid://dygjrqlriiaw3"]
 
-[ext_resource type="Texture2D" uid="uid://cyl2osdw00xxb" path="res://Resources/Sprites/Objects/XP/XP Azul/spr_Exp1.5.png" id="1_cor4e"]
-[ext_resource type="Texture2D" uid="uid://mdsnwnp0clf5" path="res://Resources/Sprites/Objects/XP/XP Azul/spr_Exp1.png" id="2_x03ht"]
-[ext_resource type="Script" path="res://Scripts/Objects/XP/XPAzul.gd" id="3_ufn6u"]
+[ext_resource type="Script" path="res://Scripts/Objects/XP/XP.gd" id="1_2a2mk"]
+[ext_resource type="Texture2D" uid="uid://cyl2osdw00xxb" path="res://Resources/Sprites/Objects/XP/XPAzul/XPAzul1.png" id="2_7v0t8"]
+[ext_resource type="Texture2D" uid="uid://mdsnwnp0clf5" path="res://Resources/Sprites/Objects/XP/XPAzul/XPAzul2.png" id="3_imytg"]
+[ext_resource type="Texture2D" uid="uid://cnnk1u5455h5d" path="res://Resources/Sprites/Objects/XP/XPVermelho/XPVermelho2.png" id="4_tmbpr"]
+[ext_resource type="Texture2D" uid="uid://d062xxeo5lnhd" path="res://Resources/Sprites/Objects/XP/XPVermelho/XPVermelho1.png" id="5_ftual"]
 
 [sub_resource type="Animation" id="Animation_4q0wo"]
 length = 0.001
@@ -55,13 +57,28 @@ _data = {
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_im676"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
-"duration": 1.5,
-"texture": ExtResource("2_x03ht")
+"duration": 1.0,
+"texture": ExtResource("2_7v0t8")
 }, {
-"duration": 1.5,
-"texture": ExtResource("1_cor4e")
+"duration": 1.0,
+"texture": ExtResource("3_imytg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_picq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tmbpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ftual")
 }],
 "loop": true,
 "name": &"default",
@@ -70,18 +87,27 @@ animations = [{
 
 [node name="XpAzul" type="Node2D"]
 position = Vector2(0, -6.07201)
-script = ExtResource("3_ufn6u")
+script = ExtResource("1_2a2mk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("sprite")
+root_node = NodePath("spriteAzul")
 libraries = {
 "": SubResource("AnimationLibrary_beth1")
 }
 
-[node name="sprite" type="AnimatedSprite2D" parent="AnimationPlayer"]
+[node name="spriteAzul" type="AnimatedSprite2D" parent="AnimationPlayer"]
+visible = false
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_im676")
 autoplay = "default"
+frame_progress = 0.216901
+
+[node name="spriteVermelho" type="AnimatedSprite2D" parent="AnimationPlayer"]
+visible = false
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_picq8")
+autoplay = "default"
+frame_progress = 0.122934
 
 [node name="visibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-9.53674e-07, 8.07201)

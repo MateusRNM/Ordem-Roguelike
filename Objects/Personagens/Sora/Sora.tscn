@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dykqd6boq4grv"]
+[gd_scene load_steps=13 format=3 uid="uid://dykqd6boq4grv"]
 
 [ext_resource type="Script" path="res://Scripts/Personagens/Sora/Sora.gd" id="1_so3gs"]
 [ext_resource type="Texture2D" uid="uid://b6h7es2qntpo2" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC1.png" id="2_cwwr2"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_k08oy"]
 [ext_resource type="Texture2D" uid="uid://l4exybltckig" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC2.png" id="3_1dths"]
 [ext_resource type="Texture2D" uid="uid://d2lebi4rb7s44" path="res://Resources/Sprites/Personagens/Sora/Idle/spr_SoraC3.png" id="4_ehbsi"]
 [ext_resource type="Texture2D" uid="uid://dmi1gg2wm6rd4" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning1.png" id="5_n3nvw"]
@@ -11,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dea0iv5t8rm56" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning4.png" id="8_icder"]
 [ext_resource type="Texture2D" uid="uid://cmphix5wgr5qu" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning5.png" id="9_f5xi1"]
 [ext_resource type="Texture2D" uid="uid://vpykncq6j1gm" path="res://Resources/Sprites/Personagens/Sora/Running/spr_SoraRunning6.png" id="10_u7lit"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_v56ej"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_y38qo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6uoa2"]
 animations = [{
@@ -58,12 +55,6 @@ animations = [{
 radius = 19.0
 height = 88.0
 
-[sub_resource type="Resource" id="Resource_oywmt"]
-script = ExtResource("12_y38qo")
-duration = 1.0
-transition = 0
-ease = 2
-
 [node name="Sora" type="CharacterBody2D"]
 top_level = true
 script = ExtResource("1_so3gs")
@@ -72,11 +63,6 @@ script = ExtResource("1_so3gs")
 physics_interpolation_mode = 1
 zoom = Vector2(0.9, 0.9)
 position_smoothing_speed = 10.0
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("2_k08oy")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -87,16 +73,5 @@ autoplay = "IDLE"
 [node name="Colisor" type="CollisionShape2D" parent="."]
 position = Vector2(8, 2)
 shape = SubResource("CapsuleShape2D_ayoff")
-
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-script = ExtResource("11_v56ej")
-follow_mode = 1
-follow_target = NodePath("..")
-zoom = Vector2(0.9, 0.9)
-snap_to_pixel = true
-tween_resource = SubResource("Resource_oywmt")
-tween_on_load = false
-dead_zone_width = 0.75
-dead_zone_height = 0.6
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]

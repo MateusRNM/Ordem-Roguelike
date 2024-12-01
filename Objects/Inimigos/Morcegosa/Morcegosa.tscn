@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://c01qddj1c8bkn" path="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa2.png" id="3_bu1kg"]
 [ext_resource type="Texture2D" uid="uid://baehqldvh5ra0" path="res://Resources/Sprites/Inimigos/Morcegosa/spr_Morcegosa3.png" id="4_ocnq0"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkj22"]
+radius = 53.9844
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eunwa"]
 animations = [{
 "frames": [{
@@ -22,13 +25,15 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h8sh"]
-size = Vector2(41, 48)
-
 [node name="Morcegosa" type="Area2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8ey1l")
+
+[node name="Colisor" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+scale = Vector2(1.2, 0.8)
+shape = SubResource("CircleShape2D_jkj22")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -36,14 +41,9 @@ sprite_frames = SubResource("SpriteFrames_eunwa")
 autoplay = "default"
 frame_progress = 0.225057
 
-[node name="Colisor" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 0)
-shape = SubResource("RectangleShape2D_6h8sh")
-
 [node name="visibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.500002, -0.5)
 scale = Vector2(5.25, 2.55)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_entered" from="visibleNotifier" to="." method="_on_visible_notifier_screen_entered"]
 [connection signal="screen_exited" from="visibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
